@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Shared.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace backend.Models
+namespace backend
 {
     public partial class DB : DbContext
     {
