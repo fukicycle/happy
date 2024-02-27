@@ -4,6 +4,7 @@ using frontend;
 using Shared;
 using frontend.Services.Interfaces;
 using frontend.Services;
+using fukicycle.Blazor.Neumorphism.Design.Base;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -21,4 +22,5 @@ builder.Services.AddHttpClient(nameof(ApplicationMode.Prod), httpClient =>
 
 builder.Services.AddScoped<IHttpClientService, HttpClientService>();
 
+builder.UseNeumorphism(BaseColor.Parse("#2E2E2E"));
 await builder.Build().RunAsync();
