@@ -45,6 +45,7 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddDbContext<DB>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DB")));
 
 builder.Services.AddScoped<IGoalService, GoalService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 builder.Services.AddCors(options =>
 {
