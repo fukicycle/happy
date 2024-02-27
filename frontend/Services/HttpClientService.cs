@@ -14,14 +14,14 @@ namespace frontend.Services
             _logger = logger;
         }
 
-        public async Task<HttpResponseResult<T>> SendAsync<T, T1>(HttpMethod method, string uri, T1? requestBody = default)
+        public async Task<HttpResponseResult<T>> SendAsync<T>(HttpMethod method, string uri, string? json = default)
         {
             try
             {
                 HttpRequestMessage httpRequestMessage = new HttpRequestMessage(method, uri);
-                if (requestBody != null)
+                if (json != null)
                 {
-                    StringContent content = new StringContent(JsonConvert.SerializeObject(requestBody), System.Text.Encoding.UTF8, "application/json");
+                    StringContent content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
                     httpRequestMessage.Content = content;
                 }
                 HttpResponseMessage httpResponseMessage = await _httpClient.SendAsync(httpRequestMessage);

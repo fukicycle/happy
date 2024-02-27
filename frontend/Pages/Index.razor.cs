@@ -1,13 +1,13 @@
 ﻿using Shared;
+using Shared.Dto.Response;
 
 namespace frontend.Pages
 {
     public partial class Index
     {
-        private readonly HttpClient _httpClient;
-        public Index()
+        private GoalResponseDto goalResponseDto { get; set; } = null!;
+        protected override async Task OnInitializedAsync()
         {
-            _httpClient = HttpClientFactory.CreateClient(ApplicationSettings.Mode.ToString());
         }
     }
 }
