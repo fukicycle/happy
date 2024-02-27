@@ -32,7 +32,8 @@ namespace backend.Services
             JwtSecurityToken token = new JwtSecurityToken(
                 issuer: "sato-home.mydns.jp",
                 audience: "fukicycle.github.io",
-                expires: DateTime.Now.AddSeconds(60), //demo
+                notBefore: DateTime.Now,
+                expires: DateTime.Now.AddDays(30), //demo
                 signingCredentials: creds,
                 claims: claims
                 );

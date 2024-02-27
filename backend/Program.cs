@@ -71,7 +71,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateIssuerSigningKey = true,
         ValidIssuer = "sato-home.mydns.jp",
         ValidAudience = "fukicycle.github.io",
-        IssuerSigningKey = new SymmetricSecurityKey(ApplicationSettings.JWT_KEY)
+        IssuerSigningKey = new SymmetricSecurityKey(ApplicationSettings.JWT_KEY),
+        ClockSkew = TimeSpan.Zero
     };
 });
 
