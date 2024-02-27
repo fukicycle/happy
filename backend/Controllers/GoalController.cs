@@ -10,14 +10,17 @@ namespace backend.Controllers
     public class GoalController : ControllerBase
     {
         private readonly IGoalService _goalService;
-        public GoalController(IGoalService goalService)
+        private readonly IAuthenticationService _authenticationService;
+        public GoalController(IGoalService goalService, IAuthenticationService authenticationService)
         {
             _goalService = goalService;
+            _authenticationService = authenticationService;
         }
 
-        [HttpGet("{email}")]
-        public IActionResult GetGoal(string email)
+        [HttpGet]
+        public IActionResult GetGoal()
         {
+            string email = _authenticationService.GetEmailFromClaims(HttpContext.User.Claims);
             try
             {
                 return Ok(_goalService.GetGoalResponseDtoByEmail(email));
