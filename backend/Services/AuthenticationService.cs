@@ -19,7 +19,8 @@ namespace backend.Services
         }
         public bool Authentication(string email)
         {
-            //demo
+            //今回はEmailが提供されればLogin成功とする
+            if (email == string.Empty) return false;
             return true;
         }
 
