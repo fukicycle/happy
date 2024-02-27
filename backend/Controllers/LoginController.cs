@@ -14,7 +14,7 @@ namespace backend.Controllers
             _authenticationService = authenticationService;
         }
         [HttpPost]
-        public IActionResult Login(LoginRequestDto loginRequestDto)
+        public IActionResult Login([FromBody] LoginRequestDto loginRequestDto)
         {
             if (_authenticationService.Authentication(loginRequestDto.Email))
             {
