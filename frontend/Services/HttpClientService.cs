@@ -26,6 +26,10 @@ namespace frontend.Services
                 }
                 HttpResponseMessage httpResponseMessage = await _httpClient.SendAsync(httpRequestMessage);
                 string responseContent = await httpResponseMessage.Content.ReadAsStringAsync();
+                if (httpResponseMessage.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    return new HttpResponseResult<T>(default!, System.Net.HttpStatusCode.Unauthorized, responseContent);
+                }
                 if (httpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
                     return new HttpResponseResult<T>(default!, System.Net.HttpStatusCode.NotFound, responseContent);
