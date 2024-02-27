@@ -5,10 +5,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Text;
+using Shared;
+using System.Security.Cryptography;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Generate jwt key
+RandomNumberGenerator.Fill(ApplicationSettings.JWT_KEY);
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -68,7 +71,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateIssuerSigningKey = true,
         ValidIssuer = "sato-home.mydns.jp",
         ValidAudience = "fukicycle.github.io",
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:SecurityKey"]))
+        IssuerSigningKey = new SymmetricSecurityKey(ApplicationSettings.JWT_KEY)
     };
 });
 

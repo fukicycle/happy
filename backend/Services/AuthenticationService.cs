@@ -1,5 +1,6 @@
 ﻿using backend.Services.Interface;
 using Microsoft.IdentityModel.Tokens;
+using Shared;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -24,13 +25,12 @@ namespace backend.Services
 
         public string GenerateAccessToken(string email)
         {
-            string securityKey = _configuration["JWT:Key"];
-            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey));
+            SymmetricSecurityKey key = new SymmetricSecurityKey(ApplicationSettings.JWT_KEY);
             SigningCredentials creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             IEnumerable<Claim> claims = new List<Claim> { new Claim("EMAIL", email) };
             JwtSecurityToken token = new JwtSecurityToken(
-                issuer: "jwt",
-                audience: "jwt",
+                issuer: "sato-home.mydns.jp",
+                audience: "fukicycle.github.io",
                 expires: DateTime.Now.AddSeconds(60), //demo
                 signingCredentials: creds,
                 claims: claims

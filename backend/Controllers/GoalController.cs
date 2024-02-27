@@ -1,9 +1,11 @@
 ﻿using backend.Services.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared;
 
 namespace backend.Controllers
 {
+    [Authorize]
     [Route("/api/v1/goals")]
     public class GoalController : ControllerBase
     {
