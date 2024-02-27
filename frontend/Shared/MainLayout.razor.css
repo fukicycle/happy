@@ -1,8 +1,9 @@
 .page {
     position: relative;
-    display: flex;
-    flex-direction: column;
     height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: calc(100% - 70px) 70px;
 }
 
 main {

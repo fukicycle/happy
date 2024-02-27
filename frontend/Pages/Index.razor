@@ -2,3 +2,36 @@
 @inject IHttpClientService HttpClientService
 
 <PageTitle>Index</PageTitle>
+<div class="content">
+    <Neumorphism BorderRadius="50%" class="neu-circle">
+        <div class="main-circle">
+            <div class="main-content">
+                <div>合計ポイント</div>
+                <div>132pt</div>
+            </div>
+            <div class="sub-content">
+                <div>昨日獲得したポイント</div>
+                <div>8pt</div>
+            </div>
+        </div>
+    </Neumorphism>
+    <div class="goal-area">
+        <div class="date-area">
+            @DateTime.Now.ToString("yyyy年MM月dd日　dddd")
+        </div>
+        <ul class="goal-list">
+            <li class="goal-item">早く寝る(3pt)</li>
+            <li class="goal-item">練習する(3pt)</li>
+            <li class="goal-item">お弁当を作る(2pt)</li>
+            <li class="goal-item">ジムに行く(1pt)</li>
+            <li class="goal-item">早起きする(1pt)</li>
+        </ul>
+    </div>
+    <div class="edit">
+        <Neumorphism class="neu" BorderRadius="50%">
+            <button class="btn-edit">
+                <img src="img/edit.svg" />
+            </button>
+        </Neumorphism>
+    </div>
+</div>
