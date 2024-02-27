@@ -7,7 +7,8 @@
     --accent-color: #63C132;
 }
 
-html, body {
+html,
+body {
     font-family: "Zen Maru Gothic", serif;
     font-weight: 400;
     font-style: normal;
@@ -16,6 +17,21 @@ html, body {
     color: var(--app-white);
 }
 
-#app, article {
+#app,
+article {
     height: 100%;
+}
+
+.splash-screen {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.splash-screen>img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
 }
