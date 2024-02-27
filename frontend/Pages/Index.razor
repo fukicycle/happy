@@ -1,9 +1,65 @@
 ﻿@page "/"
+@inject IHttpClientService HttpClientService
 
 <PageTitle>Index</PageTitle>
-
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div class="content">
+    <Neumorphism BorderRadius="50%" class="neu-circle">
+        <div class="main-circle">
+            <div class="main-content">
+                <div>ポイント</div>
+                <div>132pt</div>
+            </div>
+            <div class="sub-content">
+                <div>昨日獲得したポイント</div>
+                <div>8pt</div>
+            </div>
+        </div>
+    </Neumorphism>
+    <div class="goal-area">
+        <div class="date-area">
+            @DateTime.Now.ToString("yyyy年MM月dd日　dddd")
+        </div>
+        <ul class="goal-list">
+            <li class="goal-item">
+                <span>早く寝る(3pt)</span>
+                <span class="status">
+                    <img src="img/check.svg" />
+                </span>
+            </li>
+            <li class="goal-item">
+                <span>練習する(3pt)</span>
+                <span class="status">
+                    <img src="img/check.svg" />
+                </span>
+            </li>
+            <li class="goal-item">
+                <span>お弁当を作る(2pt)</span>
+                <Neumorphism BorderRadius="10px" class="neu">
+                    <button class="status">クリア</button>
+                </Neumorphism>
+            </li>
+            <li class="goal-item">
+                <span>ジムに行く(1pt)</span>
+                <Neumorphism BorderRadius="10px" class="neu">
+                    <button class="status">クリア</button>
+                </Neumorphism>
+            </li>
+            <li class="goal-item">
+                <span>早起きする(1pt)</span>
+                <Neumorphism BorderRadius="10px" class="neu">
+                    <button class="status">クリア</button>
+                </Neumorphism>
+            </li>
+        </ul>
+    </div>
+    <div class="edit">
+        <div class="summary">
+            <div>合計:6pt</div>
+        </div>
+        <Neumorphism class="neu" BorderRadius="50%">
+            <button class="btn-edit">
+                <img src="img/edit.svg" />
+            </button>
+        </Neumorphism>
+    </div>
+</div>
