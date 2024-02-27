@@ -1,10 +1,10 @@
 {
-  "name": "frontend",
-  "short_name": "frontend",
+  "name": "happy",
+  "short_name": "happy",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#03173d",
+  "background_color": "#2E2E2E",
+  "theme_color": "#2E2E2E",
   "prefer_related_applications": false,
   "icons": [
     {
