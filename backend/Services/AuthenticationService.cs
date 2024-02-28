@@ -1,6 +1,7 @@
 ﻿using backend.Services.Interface;
 using Microsoft.IdentityModel.Tokens;
 using Shared;
+using Shared.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -11,17 +12,18 @@ namespace backend.Services
     {
         private readonly ILogger<AuthenticationService> _logger;
         private readonly IConfiguration _configuration;
+        private readonly DB _db;
 
-        public AuthenticationService(ILogger<AuthenticationService> logger, IConfiguration configuration)
+        public AuthenticationService(ILogger<AuthenticationService> logger, IConfiguration configuration, DB db)
         {
             _logger = logger;
             _configuration = configuration;
+            _db = db;
         }
         public bool Authentication(string email)
         {
-            //今回はEmailが提供されればLogin成功とする
-            if (email == string.Empty) return false;
-            return true;
+            Member? member = _db.Members.Find(email);
+            return member != null;
         }
 
         public string GenerateAccessToken(string email)
