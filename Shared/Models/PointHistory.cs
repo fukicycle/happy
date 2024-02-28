@@ -9,5 +9,7 @@ namespace Shared.Models
         public string Email { get; set; } = null!;
         public DateTime Date { get; set; }
         public int Point { get; set; }
+
+        public virtual Member EmailNavigation { get; set; } = null!;
     }
 }

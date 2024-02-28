@@ -9,6 +9,7 @@ namespace Shared.Models
         public Guid TeamGuid { get; set; }
         public string Email { get; set; } = null!;
 
+        public virtual Member EmailNavigation { get; set; } = null!;
         public virtual Team TeamGu { get; set; } = null!;
     }
 }
