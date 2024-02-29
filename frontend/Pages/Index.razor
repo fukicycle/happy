@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject IHttpClientService HttpClientService
+@inject ILoginService LoginService
 @inherits PageBase
 
 <PageTitle>Index</PageTitle>
@@ -23,7 +24,7 @@
         <ul class="goal-list">
             @foreach (GoalPointResponseDto goalPointResponseDto in _goalPointResponseDtos)
             {
-                <GoalListItem GoalPointResponseDto="goalPointResponseDto" IsDone="false" />
+                <GoalListItem GoalPointResponseDto="goalPointResponseDto" IsDone="true" />
             }
         </ul>
     </div>

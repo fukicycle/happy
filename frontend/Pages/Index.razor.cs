@@ -10,8 +10,9 @@ namespace Happy.frontend.Pages
         {
             try
             {
-
                 StateContainer.SetLoadingState(true);
+                //login demo
+                await LoginService.GetApiTokenAsync("sample@sample.happy.com");
                 HttpResponseResult goalResponse = await HttpClientService.SendAsync(HttpMethod.Get, "/api/v1/goals");
                 if (goalResponse.StatusCode != System.Net.HttpStatusCode.OK)
                 {
@@ -32,7 +33,13 @@ namespace Happy.frontend.Pages
                     StateContainer.SetMessage(goalPointReponse.Message!);
                     return;
                 }
-
+                IEnumerable<GoalPointResponseDto>? goalPointResponseDtos = JsonConvert.DeserializeObject<IEnumerable<GoalPointResponseDto>>(goalPointReponse.Json);
+                if (goalPointResponseDtos == null)
+                {
+                    StateContainer.SetMessage($"Desirializeに失敗しました。{nameof(GoalResponseDto)}");
+                    return;
+                }
+                _goalPointResponseDtos = goalPointResponseDtos;
             }
             finally
             {

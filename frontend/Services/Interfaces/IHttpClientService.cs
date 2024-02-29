@@ -3,5 +3,6 @@
     public interface IHttpClientService
     {
         Task<HttpResponseResult> SendAsync(HttpMethod method, string uri, string? json = null);
+        void SetAuthorizationToken(string? token);
     }
 }

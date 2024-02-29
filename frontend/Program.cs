@@ -22,6 +22,7 @@ builder.Services.AddHttpClient(nameof(ApplicationMode.Prod), httpClient =>
 
 builder.Services.AddScoped<IHttpClientService, HttpClientService>();
 builder.Services.AddScoped<IStateContainer, StateContainer>();
+builder.Services.AddScoped<ILoginService, LoginService>();
 
 builder.UseNeumorphism(BaseColor.Parse("#2E2E2E"));
 await builder.Build().RunAsync();

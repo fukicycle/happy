@@ -6,6 +6,7 @@ namespace Happy.frontend.Services
 {
     public class HttpClientService : IHttpClientService
     {
+        private static string _token = string.Empty;
         private readonly HttpClient _httpClient;
         private readonly ILogger<HttpClientService> _logger;
         public HttpClientService(IHttpClientFactory httpClientFactory, ILogger<HttpClientService> logger)
@@ -18,6 +19,10 @@ namespace Happy.frontend.Services
         {
             try
             {
+                if (_token != string.Empty)
+                {
+                    _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                }
                 HttpRequestMessage httpRequestMessage = new HttpRequestMessage(method, uri);
                 if (json != null)
                 {
@@ -44,6 +49,13 @@ namespace Happy.frontend.Services
             {
                 return new HttpResponseResult(string.Empty, System.Net.HttpStatusCode.InternalServerError, ex.Message);
             }
+        }
+
+        public void SetAuthorizationToken(string? token)
+        {
+            if (token == null) throw new ArgumentNullException("Token is missing.");
+            _logger.LogInformation(token);
+            _token = token;
         }
     }
 }
