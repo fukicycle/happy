@@ -1,0 +1,20 @@
+﻿@inject IHttpClientService HttpClientService
+@inherits PageBase
+@if (IsDone)
+{
+    <li class="goal-item">
+        <span>@_displayText</span>
+        <span class="status">
+            <img src="img/check.svg" />
+        </span>
+    </li>
+}
+else
+{
+    <li class="goal-item">
+        <span>@_displayText</span>
+        <Neumorphism BorderRadius="10px" class="neu">
+            <button class="status" @onclick=@ClearButtonOnClick>クリア</button>
+        </Neumorphism>
+    </li>
+}

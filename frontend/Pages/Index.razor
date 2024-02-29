@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject IHttpClientService HttpClientService
+@inject ILoginService LoginService
 @inherits PageBase
 
 <PageTitle>Index</PageTitle>
@@ -23,43 +24,8 @@
         <ul class="goal-list">
             @foreach (GoalPointResponseDto goalPointResponseDto in _goalPointResponseDtos)
             {
-                <li class="goal-item">
-                    <span>@goalPointResponseDto.Content (@goalPointResponseDto.Point pt)</span>
-                    <span class="status">
-                        <img src="img/check.svg" />
-                    </span>
-                </li>
+                <GoalListItem GoalPointResponseDto="goalPointResponseDto" IsDone="true" />
             }
-@*             <li class="goal-item">
-                <span>早く寝る(3pt)</span>
-                <span class="status">
-                    <img src="img/check.svg" />
-                </span>
-            </li>
-            <li class="goal-item">
-                <span>練習する(3pt)</span>
-                <span class="status">
-                    <img src="img/check.svg" />
-                </span>
-            </li>
-            <li class="goal-item">
-                <span>お弁当を作る(2pt)</span>
-                <Neumorphism BorderRadius="10px" class="neu">
-                    <button class="status">クリア</button>
-                </Neumorphism>
-            </li>
-            <li class="goal-item">
-                <span>ジムに行く(1pt)</span>
-                <Neumorphism BorderRadius="10px" class="neu">
-                    <button class="status">クリア</button>
-                </Neumorphism>
-            </li>
-            <li class="goal-item">
-                <span>早起きする(1pt)</span>
-                <Neumorphism BorderRadius="10px" class="neu">
-                    <button class="status">クリア</button>
-                </Neumorphism>
-            </li> *@
         </ul>
     </div>
     <div class="edit">

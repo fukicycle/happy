@@ -2,15 +2,15 @@
 
 namespace Happy.frontend
 {
-    public class HttpResponseResult<T>
+    public class HttpResponseResult
     {
-        public HttpResponseResult(T content, HttpStatusCode statusCode, string? message = null)
+        public HttpResponseResult(string json, HttpStatusCode statusCode, string? message = null)
         {
-            Content = content;
+            Json = json;
             StatusCode = statusCode;
             Message = message;
         }
-        public T Content { get; }
+        public string Json { get; }
         public HttpStatusCode StatusCode { get; }
         public string? Message { get; }
     }

@@ -1,4 +1,5 @@
 ﻿using Happy.Shared.Dto.Response;
+using Newtonsoft.Json;
 
 namespace Happy.frontend.Pages
 {
@@ -9,24 +10,36 @@ namespace Happy.frontend.Pages
         {
             try
             {
-
                 StateContainer.SetLoadingState(true);
-                HttpResponseResult<GoalResponseDto> goalResponse = await HttpClientService.SendAsync<GoalResponseDto>(HttpMethod.Get, "/api/v1/goals");
+                //login demo
+                await LoginService.GetApiTokenAsync("sample@sample.happy.com");
+                HttpResponseResult goalResponse = await HttpClientService.SendAsync(HttpMethod.Get, "/api/v1/goals");
                 if (goalResponse.StatusCode != System.Net.HttpStatusCode.OK)
                 {
                     StateContainer.SetMessage(goalResponse.Message!);
                     return;
                 }
-                HttpResponseResult<IEnumerable<GoalPointResponseDto>> goalPointReponse =
-                    await HttpClientService.SendAsync<IEnumerable<GoalPointResponseDto>>(
+                GoalResponseDto? goalResponseDto = JsonConvert.DeserializeObject<GoalResponseDto>(goalResponse.Json);
+                if (goalResponseDto == null)
+                {
+                    throw new Exception($"Desirializeに失敗しました。{nameof(GoalResponseDto)}");
+                }
+                HttpResponseResult goalPointReponse =
+                    await HttpClientService.SendAsync(
                         HttpMethod.Get,
-                        $"/api/v1/goals/{goalResponse.Content.Guid}/goal-points");
+                        $"/api/v1/goals/{goalResponseDto.Guid}/goal-points");
                 if (goalPointReponse.StatusCode != System.Net.HttpStatusCode.OK)
                 {
                     StateContainer.SetMessage(goalPointReponse.Message!);
                     return;
                 }
-
+                IEnumerable<GoalPointResponseDto>? goalPointResponseDtos = JsonConvert.DeserializeObject<IEnumerable<GoalPointResponseDto>>(goalPointReponse.Json);
+                if (goalPointResponseDtos == null)
+                {
+                    StateContainer.SetMessage($"Desirializeに失敗しました。{nameof(GoalResponseDto)}");
+                    return;
+                }
+                _goalPointResponseDtos = goalPointResponseDtos;
             }
             finally
             {

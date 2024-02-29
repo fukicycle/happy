@@ -6,6 +6,7 @@ namespace Happy.frontend.Services
 {
     public class HttpClientService : IHttpClientService
     {
+        private static string _token = string.Empty;
         private readonly HttpClient _httpClient;
         private readonly ILogger<HttpClientService> _logger;
         public HttpClientService(IHttpClientFactory httpClientFactory, ILogger<HttpClientService> logger)
@@ -14,10 +15,14 @@ namespace Happy.frontend.Services
             _logger = logger;
         }
 
-        public async Task<HttpResponseResult<T>> SendAsync<T>(HttpMethod method, string uri, string? json = default)
+        public async Task<HttpResponseResult> SendAsync(HttpMethod method, string uri, string? json = default)
         {
             try
             {
+                if (_token != string.Empty)
+                {
+                    _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                }
                 HttpRequestMessage httpRequestMessage = new HttpRequestMessage(method, uri);
                 if (json != null)
                 {
@@ -28,23 +33,29 @@ namespace Happy.frontend.Services
                 string responseContent = await httpResponseMessage.Content.ReadAsStringAsync();
                 if (httpResponseMessage.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    return new HttpResponseResult<T>(default!, System.Net.HttpStatusCode.Unauthorized, "認証に失敗またはユーザが登録されていません。");
+                    return new HttpResponseResult(string.Empty, System.Net.HttpStatusCode.Unauthorized, "認証に失敗またはユーザが登録されていません。");
                 }
                 if (httpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    return new HttpResponseResult<T>(default!, System.Net.HttpStatusCode.NotFound, responseContent);
+                    return new HttpResponseResult(string.Empty, System.Net.HttpStatusCode.NotFound, responseContent);
                 }
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
-                    T? deserializedObject = JsonConvert.DeserializeObject<T>(responseContent) ?? throw new Exception($"Desirialized failed for class:{nameof(T)}");
-                    return new HttpResponseResult<T>(deserializedObject, System.Net.HttpStatusCode.OK);
+                    return new HttpResponseResult(responseContent, System.Net.HttpStatusCode.OK);
                 }
                 throw new Exception(responseContent);
             }
             catch (Exception ex)
             {
-                return new HttpResponseResult<T>(default!, System.Net.HttpStatusCode.InternalServerError, ex.Message);
+                return new HttpResponseResult(string.Empty, System.Net.HttpStatusCode.InternalServerError, ex.Message);
             }
+        }
+
+        public void SetAuthorizationToken(string? token)
+        {
+            if (token == null) throw new ArgumentNullException("Token is missing.");
+            _logger.LogInformation(token);
+            _token = token;
         }
     }
 }
