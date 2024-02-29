@@ -22,7 +22,16 @@
             @DateTime.Now.ToString("yyyy年MM月dd日　dddd")
         </div>
         <ul class="goal-list">
-            <li class="goal-item">
+            @foreach (GoalPointResponseDto goalPointResponseDto in _goalPointResponseDtos)
+            {
+                <li class="goal-item">
+                    <span>@goalPointResponseDto.Content (@goalPointResponseDto.Point pt)</span>
+                    <span class="status">
+                        <img src="img/check.svg" />
+                    </span>
+                </li>
+            }
+@*             <li class="goal-item">
                 <span>早く寝る(3pt)</span>
                 <span class="status">
                     <img src="img/check.svg" />
@@ -51,7 +60,7 @@
                 <Neumorphism BorderRadius="10px" class="neu">
                     <button class="status">クリア</button>
                 </Neumorphism>
-            </li>
+            </li> *@
         </ul>
     </div>
     <div class="edit">

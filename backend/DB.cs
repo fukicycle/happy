@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Shared.Models;
+using Happy.Shared.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace backend
+namespace Happy.backend
 {
     public partial class DB : DbContext
     {

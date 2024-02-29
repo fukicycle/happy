@@ -1,4 +1,4 @@
-﻿namespace frontend.Services.Interfaces
+﻿namespace Happy.frontend.Services.Interfaces
 {
     public interface IHttpClientService
     {

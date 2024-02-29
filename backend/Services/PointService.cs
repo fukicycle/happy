@@ -1,7 +1,7 @@
-﻿using backend.Services.Interface;
-using Shared.Models;
+﻿using Happy.backend.Services.Interface;
+using Happy.Shared.Models;
 
-namespace backend.Services
+namespace Happy.backend.Services
 {
     public class PointService : IPointService
     {

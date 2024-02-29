@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace frontend
+namespace Happy.frontend
 {
     public class HttpResponseResult<T>
     {

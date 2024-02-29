@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.Dto.Response
+namespace Happy.Shared.Dto.Response
 {
     public class GoalPointResponseDto
     {

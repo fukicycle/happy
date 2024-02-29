@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using frontend;
-using Shared;
-using frontend.Services.Interfaces;
-using frontend.Services;
+using Happy.frontend;
+using Happy.Shared;
+using Happy.frontend.Services.Interfaces;
+using Happy.frontend.Services;
 using fukicycle.Blazor.Neumorphism.Design.Base;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);

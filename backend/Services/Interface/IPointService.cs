@@ -1,4 +1,4 @@
-﻿namespace backend.Services.Interface
+﻿namespace Happy.backend.Services.Interface
 {
     public interface IPointService
     {

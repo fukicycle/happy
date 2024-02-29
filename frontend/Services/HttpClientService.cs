@@ -1,8 +1,8 @@
-﻿using frontend.Services.Interfaces;
+﻿using Happy.frontend.Services.Interfaces;
 using Newtonsoft.Json;
-using Shared;
+using Happy.Shared;
 
-namespace frontend.Services
+namespace Happy.frontend.Services
 {
     public class HttpClientService : IHttpClientService
     {

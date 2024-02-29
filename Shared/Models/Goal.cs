@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Shared.Models
+namespace Happy.Shared.Models
 {
     public partial class Goal
     {

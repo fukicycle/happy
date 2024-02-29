@@ -1,5 +1,4 @@
-﻿
-namespace frontend
+﻿namespace Happy.frontend
 {
     public sealed class StateContainer : IStateContainer
     {

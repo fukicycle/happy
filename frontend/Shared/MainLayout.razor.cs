@@ -1,6 +1,6 @@
-﻿using frontend.Components;
+﻿using Happy.frontend.Components;
 
-namespace frontend.Shared
+namespace Happy.frontend.Shared
 {
     public partial class MainLayout : IDisposable
     {

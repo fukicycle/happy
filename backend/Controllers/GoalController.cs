@@ -1,9 +1,9 @@
-﻿using backend.Services.Interface;
+﻿using Happy.backend.Services.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Shared;
+using Happy.Shared;
 
-namespace backend.Controllers
+namespace Happy.backend.Controllers
 {
     [Authorize]
     [Route("/api/v1/goals")]
@@ -31,12 +31,12 @@ namespace backend.Controllers
             }
         }
 
-        [HttpGet("{guid}/goal-point-list")]
-        public IActionResult GetGoalPointList(Guid guid)
+        [HttpGet("{guid}/goal-points")]
+        public IActionResult GetGoalPoints(Guid guid)
         {
             try
             {
-                return Ok(_goalService.GetGoalPointResponseDtoListByGoalGuid(guid));
+                return Ok(_goalService.GetGoalPointResponseDtosByGoalGuid(guid));
             }
             catch (Exception ex)
             {
