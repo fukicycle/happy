@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace frontend.Pages
+namespace Happy.frontend.Pages
 {
     public class PageBase : ComponentBase, IDisposable
     {

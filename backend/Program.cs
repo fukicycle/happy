@@ -1,11 +1,11 @@
-using backend;
-using backend.Services;
-using backend.Services.Interface;
+using Happy.backend;
+using Happy.backend.Services;
+using Happy.backend.Services.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Shared;
+using Happy.Shared;
 using System.Security.Cryptography;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -55,7 +55,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:7023", "https://fukicycle.github.io")
+        policy.WithOrigins("https://localhost:7023", "https://fukicycle.github.io")
                 .WithMethods("GET", "POST", "OPTIONS")
                 .WithHeaders("Authorization", "Content-Type")
                 .AllowCredentials();

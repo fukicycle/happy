@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace backend.Services.Interface
+namespace Happy.backend.Services.Interface
 {
     public interface IAuthenticationService
     {

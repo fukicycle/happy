@@ -1,9 +1,9 @@
-﻿using backend.Services.Interface;
+﻿using Happy.backend.Services.Interface;
 using Microsoft.EntityFrameworkCore;
-using Shared.Dto.Response;
-using Shared.Models;
+using Happy.Shared.Dto.Response;
+using Happy.Shared.Models;
 
-namespace backend.Services
+namespace Happy.backend.Services
 {
     public class GoalService : IGoalService
     {
@@ -15,7 +15,7 @@ namespace backend.Services
             _logger = logger;
         }
 
-        public IList<GoalPointResponseDto> GetGoalPointResponseDtoListByGoalGuid(Guid guid)
+        public IList<GoalPointResponseDto> GetGoalPointResponseDtosByGoalGuid(Guid guid)
         {
             IList<GoalPointResponseDto> goalPointResponseDtoList = new List<GoalPointResponseDto>();
             try

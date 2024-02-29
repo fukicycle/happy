@@ -1,12 +1,12 @@
-﻿using backend.Services.Interface;
+﻿using Happy.backend.Services.Interface;
 using Microsoft.IdentityModel.Tokens;
-using Shared;
-using Shared.Models;
+using Happy.Shared;
+using Happy.Shared.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace backend.Services
+namespace Happy.backend.Services
 {
     public class AuthenticationService : IAuthenticationService
     {

@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared
+namespace Happy.Shared
 {
     public static class ApplicationSettings
     {

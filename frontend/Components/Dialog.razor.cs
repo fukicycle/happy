@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace frontend.Components
+namespace Happy.frontend.Components
 {
     public partial class Dialog
     {

@@ -1,10 +1,10 @@
-﻿using Shared.Dto.Response;
+﻿using Happy.Shared.Dto.Response;
 
-namespace backend.Services.Interface
+namespace Happy.backend.Services.Interface
 {
     public interface IGoalService
     {
         GoalResponseDto? GetGoalResponseDtoByEmail(string email);
-        IList<GoalPointResponseDto> GetGoalPointResponseDtoListByGoalGuid(Guid guid);
+        IList<GoalPointResponseDto> GetGoalPointResponseDtosByGoalGuid(Guid guid);
     }
 }
