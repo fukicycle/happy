@@ -28,7 +28,7 @@ namespace Happy.frontend.Services
                 string responseContent = await httpResponseMessage.Content.ReadAsStringAsync();
                 if (httpResponseMessage.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    return new HttpResponseResult<T>(default!, System.Net.HttpStatusCode.Unauthorized, responseContent);
+                    return new HttpResponseResult<T>(default!, System.Net.HttpStatusCode.Unauthorized, "認証に失敗またはユーザが登録されていません。");
                 }
                 if (httpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {

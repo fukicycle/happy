@@ -9,7 +9,7 @@
     </main>
     <NavMenu />
 </div>
-<Dialog @ref=DialogInstance Title="エラーが発生しました。" Message="@StateContainer.Message" />
+<Dialog @ref=DialogInstance Title="エラーが発生しました" Message="@StateContainer.Message" />
 @if (StateContainer.IsLoading)
 {
     <Loader />
