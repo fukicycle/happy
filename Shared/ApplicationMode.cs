@@ -9,8 +9,6 @@ namespace Happy.Shared
     public enum ApplicationMode
     {
         Dev,
-        Prod,
-        Demo,
-        Test
+        Prod
     }
 }
