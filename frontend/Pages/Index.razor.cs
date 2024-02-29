@@ -3,11 +3,12 @@ using Shared.Dto.Response;
 
 namespace frontend.Pages
 {
-    public partial class Index
+    public partial class Index : PageBase
     {
         private GoalResponseDto goalResponseDto { get; set; } = null!;
         protected override async Task OnInitializedAsync()
         {
+            HttpResponseResult<GoalResponseDto> response = await HttpClientService.SendAsync<GoalResponseDto>(HttpMethod.Get, "/api/v1/goals");
         }
     }
 }
