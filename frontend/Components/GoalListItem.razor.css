@@ -1,0 +1,16 @@
+﻿.goal-item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status {
+    width: 65px;
+    text-align: center;
+    color: var(--app-white);
+}
+
+::deep .neu > div {
+    padding: 0 !important;
+}

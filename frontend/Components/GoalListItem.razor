@@ -1,0 +1,18 @@
+﻿@if (IsDone)
+{
+    <li class="goal-item">
+        <span>@_displayText</span>
+        <span class="status">
+            <img src="img/check.svg" />
+        </span>
+    </li>
+}
+else
+{
+    <li class="goal-item">
+        <span>ジムに行く(1pt)</span>
+        <Neumorphism BorderRadius="10px" class="neu">
+            <button class="status">クリア</button>
+        </Neumorphism>
+    </li>
+}
