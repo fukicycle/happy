@@ -1,0 +1,55 @@
+﻿.dialog-bg {
+    z-index: 1000;
+    background-color: #992E2E2E;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog-container {
+    width: 85%;
+    max-width: 300px;
+    background-color: var(--app-black);
+    box-shadow: var(--app-white) 10px 10px 10px;
+    border-radius: 20px;
+}
+
+.dialog-header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+}
+
+    .dialog-header > div {
+        height: 90%;
+    }
+
+        .dialog-header > div > span {
+            display: inline-block;
+            margin: auto 0;
+        }
+
+.logo-img {
+    object-fit: contain;
+}
+
+.dialog-title {
+    padding: .5rem;
+    font-size: 24px;
+}
+
+.dialog-body {
+    padding: 1rem;
+    font-size: 18px;
+}
+
+.dialog-ok-btn {
+    margin-left: auto;
+}
