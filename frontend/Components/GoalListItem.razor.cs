@@ -44,7 +44,7 @@ namespace Happy.frontend.Components
                 StateContainer.SetLoadingState(true);
                 GainPointRequestDto gainPointRequestDto = new GainPointRequestDto(_point);
                 string json = JsonConvert.SerializeObject(gainPointRequestDto);
-                HttpResponseResult<string> response = await HttpClientService.SendAsync<string>(HttpMethod.Post, "/api/v1/points", json);
+                HttpResponseResult response = await HttpClientService.SendAsync(HttpMethod.Post, "/api/v1/points", json);
                 if (response.StatusCode != System.Net.HttpStatusCode.OK) throw new Exception(response.Message);
             }
             catch (Exception ex)
