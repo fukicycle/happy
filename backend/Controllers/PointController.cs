@@ -1,16 +1,20 @@
 ﻿using Happy.backend.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Happy.Shared.Dto.Request;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Controllers
 {
+    [Authorize]
     [Route("/api/v1/points")]
     public class PointController : ControllerBase
     {
         private readonly IPointService _pointService;
-        public PointController(IPointService pointService)
+        private readonly IAuthenticationService _authenticationService;
+        public PointController(IPointService pointService, IAuthenticationService authenticationService)
         {
             _pointService = pointService;
+            _authenticationService = authenticationService;
         }
 
         [HttpPost]
@@ -18,7 +22,8 @@ namespace backend.Controllers
         {
             try
             {
-                _pointService.AddPoint(gainPointRequestDto.Email, gainPointRequestDto.Point);
+                string email = _authenticationService.GetEmailFromClaims(HttpContext.User.Claims);
+                _pointService.AddPoint(email, gainPointRequestDto.Point);
                 return Ok();
             }
             catch (Exception ex)

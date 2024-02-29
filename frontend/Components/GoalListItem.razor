@@ -1,4 +1,6 @@
-﻿@if (IsDone)
+﻿@inject IHttpClientService HttpClientService
+@inherits PageBase
+@if (IsDone)
 {
     <li class="goal-item">
         <span>@_displayText</span>
@@ -12,7 +14,7 @@ else
     <li class="goal-item">
         <span>ジムに行く(1pt)</span>
         <Neumorphism BorderRadius="10px" class="neu">
-            <button class="status">クリア</button>
+            <button class="status" @onclick=@ClearButtonOnClick>クリア</button>
         </Neumorphism>
     </li>
 }
