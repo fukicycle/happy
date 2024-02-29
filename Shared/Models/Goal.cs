@@ -16,6 +16,7 @@ namespace Shared.Models
         public int TargetYear { get; set; }
         public int TargetMonth { get; set; }
 
+        public virtual Member EmailNavigation { get; set; } = null!;
         public virtual ICollection<GoalPoint> GoalPoints { get; set; }
     }
 }

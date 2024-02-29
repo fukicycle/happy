@@ -49,6 +49,7 @@ builder.Services.AddDbContext<DB>(options => options.UseSqlServer(builder.Config
 
 builder.Services.AddScoped<IGoalService, GoalService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<IPointService, PointService>();
 
 builder.Services.AddCors(options =>
 {
