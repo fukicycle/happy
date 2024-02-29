@@ -2,8 +2,11 @@
 {
     public interface IStateContainer
     {
+        event Action OnLoadingStateChanged;
+        bool IsLoading { get; }
+        void SetLoadingState(bool isLoading);
+        event Action OnMessageChanged;
         string Message { get; }
-        event Action? OnStateChanged;
         void ClearMessage();
         void SetMessage(string message);
     }

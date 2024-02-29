@@ -8,11 +8,13 @@ namespace frontend.Pages
         public IStateContainer StateContainer { get; private set; } = null!;
         protected override void OnInitialized()
         {
-            StateContainer.OnStateChanged += StateHasChanged;
+            StateContainer.OnMessageChanged += StateHasChanged;
+            StateContainer.OnLoadingStateChanged += StateHasChanged;
         }
         public void Dispose()
         {
-            StateContainer.OnStateChanged -= StateHasChanged;
+            StateContainer.OnMessageChanged -= StateHasChanged;
+            StateContainer.OnLoadingStateChanged -= StateHasChanged;
         }
     }
 }

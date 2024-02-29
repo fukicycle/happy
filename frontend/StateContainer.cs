@@ -5,20 +5,30 @@ namespace frontend
     {
         public string Message { get; private set; } = null!;
 
-        public event Action? OnStateChanged;
+        public bool IsLoading { get; private set; } = false;
+
+        public event Action OnMessageChanged = null!;
+        public event Action OnLoadingStateChanged = null!;
 
         public void ClearMessage()
         {
             Message = string.Empty;
-            NotifyStateChange();
+            NotifyMessageChanged();
+        }
+
+        public void SetLoadingState(bool isLoading)
+        {
+            IsLoading = isLoading;
+            NotifyLoadingChanged();
         }
 
         public void SetMessage(string message)
         {
             Message = message;
-            NotifyStateChange();
+            NotifyMessageChanged();
         }
 
-        private void NotifyStateChange() => OnStateChanged?.Invoke();
+        private void NotifyMessageChanged() => OnMessageChanged.Invoke();
+        private void NotifyLoadingChanged() => OnLoadingStateChanged.Invoke();
     }
 }

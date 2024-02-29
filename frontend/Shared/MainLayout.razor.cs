@@ -7,10 +7,11 @@ namespace frontend.Shared
         private Dialog DialogInstance { get; set; } = null!;
         protected override void OnInitialized()
         {
-            StateContainer.OnStateChanged += OnStateChanged;
+            StateContainer.OnMessageChanged += OnMessageChanged;
+            StateContainer.OnLoadingStateChanged += StateHasChanged;
         }
 
-        private void OnStateChanged()
+        private void OnMessageChanged()
         {
             if (DialogInstance == null)
             {
@@ -26,7 +27,8 @@ namespace frontend.Shared
 
         public void Dispose()
         {
-            StateContainer.OnStateChanged -= OnStateChanged;
+            StateContainer.OnMessageChanged -= OnMessageChanged;
+            StateContainer.OnLoadingStateChanged -= StateHasChanged;
         }
     }
 }

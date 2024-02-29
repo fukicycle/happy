@@ -10,3 +10,7 @@
     <NavMenu />
 </div>
 <frontend.Components.Dialog @ref=DialogInstance Title="エラーが発生しました。" Message="@StateContainer.Message" />
+@if (StateContainer.IsLoading)
+{
+    <frontend.Components.Loader />
+}

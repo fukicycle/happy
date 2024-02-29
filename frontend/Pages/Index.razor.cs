@@ -8,11 +8,13 @@ namespace frontend.Pages
         private GoalResponseDto goalResponseDto { get; set; } = null!;
         protected override async Task OnInitializedAsync()
         {
+            StateContainer.SetLoadingState(true);
             HttpResponseResult<GoalResponseDto> response = await HttpClientService.SendAsync<GoalResponseDto>(HttpMethod.Get, "/api/v1/goals");
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
                 StateContainer.SetMessage(response.Message!);
             }
+            StateContainer.SetLoadingState(false);
         }
     }
 }
