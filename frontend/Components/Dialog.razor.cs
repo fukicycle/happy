@@ -13,12 +13,14 @@ namespace frontend.Components
 
         public void Close()
         {
+            Title = string.Empty;
+            Message = string.Empty;
             _displayChangeStyle = "display: none;";
         }
 
         public void Open()
         {
-            _displayChangeStyle = "display: block;";
+            _displayChangeStyle = "display: flex;";
         }
     }
 }

@@ -3,10 +3,12 @@
         <div class="dialog-header">
             <div>
                 <img class="logo-img" src="img/logo.svg" />
-                <span>Hoppy</span>
+                <span>Happy</span>
             </div>
 
-            <button class="dialog-close-btn">&close;</button>
+            <button class="dialog-close-btn" @onclick=@Close>
+                <img src="img/close.svg" />
+            </button>
         </div>
         <div class="dialog-title">
             <div>@Title</div>
@@ -15,7 +17,7 @@
             <div class="dialog-msg">
                 @Message
             </div>
-            <button class="dialog-ok-btn">OK</button>
+            <button class="dialog-ok-btn" @onclick=@Close>OK</button>
         </div>
     </div>
 </div>

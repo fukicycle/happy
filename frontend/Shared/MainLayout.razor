@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@inject IStateContainer StateContainer
 
 <div class="page">
     <main>
@@ -8,3 +9,4 @@
     </main>
     <NavMenu />
 </div>
+<frontend.Components.Dialog @ref=DialogInstance Title="エラーが発生しました。" Message="@StateContainer.Message" />

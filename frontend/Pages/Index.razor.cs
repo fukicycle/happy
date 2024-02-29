@@ -9,6 +9,10 @@ namespace frontend.Pages
         protected override async Task OnInitializedAsync()
         {
             HttpResponseResult<GoalResponseDto> response = await HttpClientService.SendAsync<GoalResponseDto>(HttpMethod.Get, "/api/v1/goals");
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                StateContainer.SetMessage(response.Message!);
+            }
         }
     }
 }

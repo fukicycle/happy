@@ -1,6 +1,6 @@
 ﻿.dialog-bg {
     z-index: 1000;
-    background-color: #992E2E2E;
+    background-color: #2E2E2EEE;
     position: fixed;
     top: 0;
     left: 0;
@@ -11,11 +11,18 @@
     align-items: center;
 }
 
+.dialog-close-btn {
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
 .dialog-container {
+    padding: .5rem;
     width: 85%;
     max-width: 300px;
     background-color: var(--app-black);
-    box-shadow: var(--app-white) 10px 10px 10px;
+    box-shadow: #000 4px 4px 8px;
     border-radius: 20px;
 }
 
@@ -38,18 +45,32 @@
 
 .logo-img {
     object-fit: contain;
+    height: 100%;
 }
 
 .dialog-title {
     padding: .5rem;
-    font-size: 24px;
-}
-
-.dialog-body {
-    padding: 1rem;
     font-size: 18px;
 }
 
+.dialog-body {
+    padding-left: 1rem;
+    font-size: 16px;
+}
+
+.dialog-msg {
+    padding: .5rem 0;
+}
+
 .dialog-ok-btn {
+    margin: 0;
     margin-left: auto;
+    display: block;
+    border-radius: 10px;
+    padding: .3rem;
+    background-color: var(--app-black);
+    border: none;
+    color: var(--app-white);
+    box-shadow: #000 4px 4px 8px;
+    width: 80px;
 }
