@@ -13,7 +13,7 @@
 
 .login-container {
     max-width: 400px;
-    min-width: 250px;
+    min-width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,6 +36,7 @@
     }
 
 .login-type {
+    width: 100%;
     padding: .5rem;
     font-size: 18px;
 }
