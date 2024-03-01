@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
+using System;
+using System.Security.Claims;
 
 namespace Happy.frontend.Pages
 {
@@ -32,12 +34,19 @@ namespace Happy.frontend.Pages
                 {
                     return;
                 }
-                if (authenticationState.User.Identity.IsAuthenticated)
+                if (!authenticationState.User.Identity.IsAuthenticated)
                 {
-                    StateContainer.SetLoadingState(false);
-                    await Task.Delay(2000);
-                    NavigationManager.NavigateTo("");
+                    return;
                 }
+                string email = authenticationState.User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.Email)?.Value ?? string.Empty;
+                if (email == string.Empty)
+                {
+                    return;
+                }
+                await LocalStorageService.SetItemAsStringAsync("EMAIL", email);
+                StateContainer.SetLoadingState(false);
+                await Task.Delay(2000);
+                NavigationManager.NavigateTo("");
             }
             finally
             {
