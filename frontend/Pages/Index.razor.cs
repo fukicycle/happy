@@ -11,8 +11,6 @@ namespace Happy.frontend.Pages
             try
             {
                 StateContainer.SetLoadingState(true);
-                //login demo
-                await LoginService.GetApiTokenAsync("sample@sample.happy.com");
                 HttpResponseResult goalResponse = await HttpClientService.SendAsync(HttpMethod.Get, "/api/v1/goals");
                 if (goalResponse.StatusCode != System.Net.HttpStatusCode.OK)
                 {

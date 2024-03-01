@@ -5,6 +5,7 @@ using Happy.Shared;
 using Happy.frontend.Services.Interfaces;
 using Happy.frontend.Services;
 using fukicycle.Blazor.Neumorphism.Design.Base;
+using Blazored.LocalStorage;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -23,6 +24,15 @@ builder.Services.AddHttpClient(nameof(ApplicationMode.Prod), httpClient =>
 builder.Services.AddScoped<IHttpClientService, HttpClientService>();
 builder.Services.AddScoped<IStateContainer, StateContainer>();
 builder.Services.AddScoped<ILoginService, LoginService>();
+
+builder.Services.AddBlazoredLocalStorage();
+
+builder.Services.AddOidcAuthentication(options =>
+{
+    builder.Configuration.Bind("Google", options.ProviderOptions);
+});
+builder.Services.AddOptions();
+builder.Services.AddAuthorizationCore();
 
 builder.UseNeumorphism(BaseColor.Parse("#2E2E2E"));
 await builder.Build().RunAsync();
