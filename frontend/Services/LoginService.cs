@@ -18,7 +18,7 @@ namespace Happy.frontend.Services
         {
             try
             {
-                LoginRequestDto loginRequestDto = new LoginRequestDto("sample@sample.happy.com");//demo
+                LoginRequestDto loginRequestDto = new LoginRequestDto(email);
                 string json = JsonConvert.SerializeObject(loginRequestDto);
                 HttpResponseResult response = await _httpClientService.SendAsync(HttpMethod.Post, "/api/v1/login", json);
                 if (response.StatusCode != System.Net.HttpStatusCode.OK)
