@@ -46,7 +46,7 @@ namespace Happy.frontend.Pages
                 await LocalStorageService.SetItemAsStringAsync("EMAIL", email);
                 StateContainer.SetLoadingState(false);
                 await Task.Delay(2000);
-                NavigationManager.NavigateTo("");
+                NavigationManager.NavigateTo("api-auth");
             }
             finally
             {
