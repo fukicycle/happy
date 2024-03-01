@@ -38,7 +38,7 @@ namespace Happy.frontend.Pages
                 {
                     return;
                 }
-                string email = authenticationState.User.Claims.FirstOrDefault(a => a.Type == ClaimTypes.Email)?.Value ?? string.Empty;
+                string email = authenticationState.User.Claims.FirstOrDefault(a => a.Type == "email")?.Value ?? string.Empty;
                 if (email == string.Empty)
                 {
                     return;
