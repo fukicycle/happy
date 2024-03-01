@@ -13,7 +13,7 @@ namespace Happy.frontend.Shared
                 return;
             }
             await LoginService.GetApiTokenAsync(email);
-            NavigationManager.NavigateTo("");
+            NavigationManager.NavigateTo("home");
         }
     }
 }
