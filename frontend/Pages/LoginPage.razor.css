@@ -1,0 +1,62 @@
+﻿.login-wrapper {
+    z-index: 200;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--app-black);
+}
+
+.login-container {
+    max-width: 400px;
+    min-width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 32px;
+    padding: 1rem;
+}
+
+.logo-img {
+    margin: 1rem;
+    width: 200px;
+    height: 200px;
+    padding: 1rem !important;
+}
+
+    .logo-img > img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+
+.login-type {
+    padding: .5rem;
+    font-size: 18px;
+}
+
+    .login-type > ::deep div {
+        margin: 20px auto;
+    }
+
+button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: var(--app-white);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    button > img {
+        height: 100%;
+        object-fit: contain;
+        margin-right: 10px;
+    }
