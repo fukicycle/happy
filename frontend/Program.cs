@@ -31,6 +31,8 @@ builder.Services.AddOidcAuthentication(options =>
 {
     builder.Configuration.Bind("Google", options.ProviderOptions);
 });
+builder.Services.AddOptions();
+builder.Services.AddAuthorizationCore();
 
 builder.UseNeumorphism(BaseColor.Parse("#2E2E2E"));
 await builder.Build().RunAsync();
