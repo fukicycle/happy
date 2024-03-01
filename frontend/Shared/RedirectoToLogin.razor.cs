@@ -5,7 +5,6 @@ namespace Happy.frontend.Shared
     {
         protected override async Task OnInitializedAsync()
         {
-            await Task.Delay(2000);
             NavigationManager.NavigateTo("login");
         }
     }
