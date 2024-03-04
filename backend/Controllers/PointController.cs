@@ -31,5 +31,20 @@ namespace backend.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet]
+        public IActionResult GetYesterdayPoint()
+        {
+            try
+            {
+                string email = _authenticationService.GetEmailFromClaims(HttpContext.User.Claims);
+                //TODO 前日のポイント合計を返す
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }
