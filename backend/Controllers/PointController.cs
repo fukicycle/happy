@@ -23,7 +23,7 @@ namespace backend.Controllers
             try
             {
                 string email = _authenticationService.GetEmailFromClaims(HttpContext.User.Claims);
-                _pointService.AddPoint(email, gainPointRequestDto.Point);
+                _pointService.AddPoint(email, gainPointRequestDto.GoalPointGuid);
                 return Ok();
             }
             catch (Exception ex)

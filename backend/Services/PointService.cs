@@ -14,7 +14,7 @@ namespace Happy.backend.Services
             _logger = logger;
         }
 
-        public void AddPoint(string email, int point)
+        public void AddPoint(string email, Guid goalPointGuid)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace Happy.backend.Services
                 {
                     Date = DateTime.Now,
                     Email = email,
-                    Point = point,
+                    GaolPointGuid = goalPointGuid,
                     Guid = Guid.NewGuid()
                 };
                 _db.PointHistories.Add(pointHistory);

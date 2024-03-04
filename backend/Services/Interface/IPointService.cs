@@ -2,6 +2,6 @@
 {
     public interface IPointService
     {
-        void AddPoint(string email, int point);
+        void AddPoint(string email, Guid goalPointGuid);
     }
 }
