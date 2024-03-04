@@ -3,7 +3,7 @@ namespace Happy.frontend.Shared
 {
     public partial class RedirectoToLogin
     {
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
             NavigationManager.NavigateTo("login");
         }
