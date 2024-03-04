@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Happy.Shared.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,11 @@ namespace Happy.Shared.Dto.Response
     {
         public UserPointResponseDto(int yesterdayPoint, int totalPoint)
         {
-            YesterdayPoint = yesterdayPoint;
-            TotalPoint = totalPoint;
+            YesterdayPoint = new Point(yesterdayPoint);
+            TotalPoint = new Point(totalPoint);
 
         }
-        public int YesterdayPoint { get; }
-        public int TotalPoint { get; }
+        public Point YesterdayPoint { get; }
+        public Point TotalPoint { get; }
     }
 }
