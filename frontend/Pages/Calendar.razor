@@ -1,2 +1,36 @@
-﻿@page "/calendar"
-<h1>Calendar</h1>
+﻿@inject ICalendarService CalendarService
+@page "/calendar"
+@inherits PageBase
+<div class="content">
+    <div>ポイントカレンダー</div>
+    <div class="select-area">
+        <button @onclick=@PrevButtonOnClick>&lt;</button>
+        <div>@_date.ToString("MMMM")</div>
+        <button @onclick=@NextButtonOnClick>&gt;</button>
+    </div>
+    <div class="calendar-area">
+        <Neumorphism BorderRadius="20px">
+            <div class="calendar">
+                <div class="calendar-header">
+                    <div class="sun">日</div>
+                    <div class="mon">月</div>
+                    <div class="tue">火</div>
+                    <div class="wed">水</div>
+                    <div class="thr">木</div>
+                    <div class="fri">金</div>
+                    <div class="sat">土</div>
+                </div>
+                <div class="calendar-body">
+                    @foreach (CalendarCellItem calendarCellItem in _calendarCellItems)
+                    {
+                        <div class="@calendarCellItem.CssValue">
+                            <CalendarCell DateTime="calendarCellItem.DateTime" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </Neumorphism>
+    </div>
+    <div class="detail-area">
+    </div>
+</div>

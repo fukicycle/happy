@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Happy.Shared.Dto.Request;
 using Microsoft.AspNetCore.Authorization;
+using Happy.Shared.Dto.Response;
 
 namespace backend.Controllers
 {
@@ -38,8 +39,8 @@ namespace backend.Controllers
             try
             {
                 string email = _authenticationService.GetEmailFromClaims(HttpContext.User.Claims);
-                //TODO 前日のポイント合計を返す
-                return Ok();
+                UserPointResponseDto userPointResponseDto = _pointService.GetUserPointResponseDtoByEmail(email);
+                return Ok(userPointResponseDto);
             }
             catch (Exception ex)
             {
