@@ -11,5 +11,6 @@ namespace Happy.Shared.Models
         public Guid GaolPointGuid { get; set; }
 
         public virtual Member EmailNavigation { get; set; } = null!;
+        public virtual GoalPoint GoalPoint { get; set; } = null!;
     }
 }
