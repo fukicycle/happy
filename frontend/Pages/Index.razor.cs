@@ -58,5 +58,10 @@ namespace Happy.frontend.Pages
                 StateContainer.SetLoadingState(false);
             }
         }
+
+        private void EditButtonOnClick()
+        {
+            NavigationManager.NavigateTo("add");
+        }
     }
 }

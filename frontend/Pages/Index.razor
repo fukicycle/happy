@@ -1,6 +1,7 @@
 ﻿@page "/home"
 @inject IHttpClientService HttpClientService
 @inject ILoginService LoginService
+@inject NavigationManager NavigationManager
 @inherits PageBase
 @attribute [Authorize]
 
@@ -48,7 +49,7 @@
             <div>合計:6pt</div>
         </div>
         <Neumorphism class="neu" BorderRadius="50%">
-            <button class="btn-edit">
+            <button class="btn-edit" @onclick=@EditButtonOnClick>
                 <img src="img/edit.svg" />
             </button>
         </Neumorphism>

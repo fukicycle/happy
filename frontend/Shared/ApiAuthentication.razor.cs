@@ -12,7 +12,13 @@ namespace Happy.frontend.Shared
                 NavigationManager.NavigateTo("login");
                 return;
             }
-            await LoginService.GetApiTokenAsync(email);
+            string token = await LoginService.LoginAsync(email);
+            if (token == string.Empty)
+            {
+                NavigationManager.NavigateTo("login");
+                return;
+            }
+            HttpClientService.SetAuthorizationToken(token);
             NavigationManager.NavigateTo("home");
         }
     }

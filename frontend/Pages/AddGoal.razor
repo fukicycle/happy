@@ -1,0 +1,32 @@
+﻿@page "/add"
+<div class="add-page-wrapper">
+    <div class="add-page-container">
+        <div class="page-title">目標を決める</div>
+        <div class="goal-period">
+            <div>@GetDisplayTextFromDateTime(_periodStartDate) ~ @GetDisplayTextFromDateTime(_periodEndDate)</div>
+        </div>
+        <div class="goal-area">
+            <ul class="goal-list">
+                <li class="goal-item">
+                    <input class="goal-content" type="text" value="早く寝る" />
+                    <input class="goal-point" type="number" value="3" />
+                </li>
+                <li class="goal-item">
+                    <input class="goal-content" type="text" />
+                    <input class="goal-point" type="number" />
+                </li>
+            </ul>
+            <Neumorphism BorderRadius="20px">
+                <button>入力欄を増やす</button>
+            </Neumorphism>
+        </div>
+        <div class="btn-area">
+            <Neumorphism BorderRadius="20px">
+                <button>登録</button>
+            </Neumorphism>
+            <Neumorphism BorderRadius="20px">
+                <button class="btn-cancel">キャンセル</button>
+            </Neumorphism>
+        </div>
+    </div>
+</div>
