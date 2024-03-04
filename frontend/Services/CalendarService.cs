@@ -1,4 +1,5 @@
-﻿using Happy.frontend.Models;
+﻿using System.Diagnostics;
+using Happy.frontend.Models;
 using Happy.frontend.Services.Interfaces;
 using Happy.Shared;
 using Happy.Shared.Dto.Response;
@@ -31,7 +32,6 @@ namespace Happy.frontend.Services
 
             //TODO DBから値の取得を実施
             //IEnumerable<PointHistoryResponseDto> pointHistoryResponseDtos = await GetPointHistoriesAsync(year, month);
-            await Task.Delay(1000);
             IList<CalendarCellItem> calendarCellItems = new List<CalendarCellItem>();
             for (DateTime date = startDate; date <= endDate; date = date.AddDays(1))
             {

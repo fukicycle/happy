@@ -29,6 +29,7 @@ namespace Happy.frontend.Pages
             try
             {
                 StateContainer.SetLoadingState(true);
+                _calendarCellItems = Enumerable.Empty<CalendarCellItem>();
                 _calendarCellItems = await CalendarService.GetCalendarCellItemsAsync(_date.Year, _date.Month);
             }
             catch (Exception ex)
