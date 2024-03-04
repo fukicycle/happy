@@ -24,7 +24,7 @@ namespace Happy.backend.Services
                 IEnumerable<GoalPoint> goalPointList = goal.GoalPoints;
                 foreach (GoalPoint goalPoint in goalPointList)
                 {
-                    bool isDone = _db.PointHistories.Any(pointHistory => pointHistory.Date == DateTime.Today && pointHistory.GaolPointGuid == goalPoint.Guid);
+                    bool isDone = _db.PointHistories.Any(pointHistory => pointHistory.Date == DateTime.Today && pointHistory.GoalPointGuid == goalPoint.Guid);
                     GoalPointResponseDto goalPointResponseDto = new GoalPointResponseDto(goalPoint.Guid, goalPoint.Content, goalPoint.Guid, goalPoint.Point, isDone);
                     goalPointResponseDtoList.Add(goalPointResponseDto);
                 }
