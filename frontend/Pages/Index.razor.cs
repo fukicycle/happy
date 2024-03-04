@@ -1,4 +1,5 @@
-﻿using Happy.Shared.Dto.Response;
+﻿using Happy.frontend.Models;
+using Happy.Shared.Dto.Response;
 using Newtonsoft.Json;
 
 namespace Happy.frontend.Pages
@@ -6,8 +7,18 @@ namespace Happy.frontend.Pages
     public partial class Index : PageBase
     {
         private IEnumerable<GoalPointResponseDto> _goalPointResponseDtos = Enumerable.Empty<GoalPointResponseDto>();
-        private UserPointResponseDto? _userPointResponseDto = null;
+        private UserPoint? _userPoint = null;
         protected override async Task OnInitializedAsync()
+        {
+            await RefreshAsync();
+        }
+
+        private void EditButtonOnClick()
+        {
+            NavigationManager.NavigateTo("add");
+        }
+
+        private async Task RefreshAsync()
         {
             try
             {
@@ -35,7 +46,7 @@ namespace Happy.frontend.Pages
                 IEnumerable<GoalPointResponseDto>? goalPointResponseDtos = JsonConvert.DeserializeObject<IEnumerable<GoalPointResponseDto>>(goalPointReponse.Json);
                 if (goalPointResponseDtos == null)
                 {
-                    StateContainer.SetMessage($"Desirializeに失敗しました。{nameof(GoalResponseDto)}");
+                    StateContainer.SetMessage($"Desirializeに失敗しました。{nameof(IEnumerable<GoalPointResponseDto>)}");
                     return;
                 }
                 _goalPointResponseDtos = goalPointResponseDtos;
@@ -51,17 +62,12 @@ namespace Happy.frontend.Pages
                     StateContainer.SetMessage($"Desirializeに失敗しました。{nameof(UserPointResponseDto)}");
                     return;
                 }
-                _userPointResponseDto = userPointResponseDto;
+                _userPoint = new UserPoint(userPointResponseDto.YesterdayPoint, userPointResponseDto.TotalPoint);
             }
             finally
             {
                 StateContainer.SetLoadingState(false);
             }
-        }
-
-        private void EditButtonOnClick()
-        {
-            NavigationManager.NavigateTo("add");
         }
     }
 }

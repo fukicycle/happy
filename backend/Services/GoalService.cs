@@ -42,6 +42,11 @@ namespace Happy.backend.Services
         {
             try
             {
+                Member? member = _db.Members.Find(email);
+                if (member == null)
+                {
+                    throw new Exception("No such user.");
+                }
                 Goal? goal = _db.Goals.Where(goal => goal.Email == email).OrderByDescending(goal => goal.Date).FirstOrDefault();
                 if (goal == null) return null;
                 GoalResponseDto goalResponseDto = new GoalResponseDto(goal.Guid, goal.Email, goal.TargetYear, goal.TargetMonth);

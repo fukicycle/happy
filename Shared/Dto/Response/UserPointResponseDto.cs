@@ -11,11 +11,11 @@ namespace Happy.Shared.Dto.Response
     {
         public UserPointResponseDto(int yesterdayPoint, int totalPoint)
         {
-            YesterdayPoint = new Point(yesterdayPoint);
-            TotalPoint = new Point(totalPoint);
+            YesterdayPoint = yesterdayPoint;
+            TotalPoint = totalPoint;
 
         }
-        public Point YesterdayPoint { get; }
-        public Point TotalPoint { get; }
+        public int YesterdayPoint { get; }
+        public int TotalPoint { get; }
     }
 }
