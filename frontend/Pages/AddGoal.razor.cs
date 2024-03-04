@@ -21,5 +21,10 @@
             }
             return date.Value.ToString("MM/dd(ddd)");
         }
+
+        private void CancelButtonOnClick()
+        {
+            NavigationManager.NavigateTo("home");
+        }
     }
 }

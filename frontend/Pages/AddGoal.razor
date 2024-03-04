@@ -1,4 +1,5 @@
-﻿@page "/add"
+﻿@inject NavigationManager NavigationManager
+@page "/add"
 <div class="add-page-wrapper">
     <div class="add-page-container">
         <div class="page-title">目標を決める</div>
@@ -25,7 +26,7 @@
                 <button>登録</button>
             </Neumorphism>
             <Neumorphism BorderRadius="20px">
-                <button class="btn-cancel">キャンセル</button>
+                <button class="btn-cancel" @onclick=@CancelButtonOnClick>キャンセル</button>
             </Neumorphism>
         </div>
     </div>
