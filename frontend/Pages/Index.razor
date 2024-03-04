@@ -10,11 +10,25 @@
         <div class="main-circle">
             <div class="main-content">
                 <div>ポイント</div>
-                <div>132pt</div>
+                @if (_userPointResponseDto == null)
+                {
+                    <div>-</div>
+                }
+                else
+                {
+                    <div>@_userPointResponseDto.TotalPoint.DisplayText</div>
+                }
             </div>
             <div class="sub-content">
                 <div>昨日獲得したポイント</div>
-                <div>8pt</div>
+                @if (_userPointResponseDto == null)
+                {
+                    <div>-</div>
+                }
+                else
+                {
+                    <div>@_userPointResponseDto.YesterdayPoint.DisplayText</div>
+                }
             </div>
         </div>
     </Neumorphism>
@@ -25,7 +39,7 @@
         <ul class="goal-list">
             @foreach (GoalPointResponseDto goalPointResponseDto in _goalPointResponseDtos)
             {
-                <GoalListItem GoalPointResponseDto="goalPointResponseDto" IsDone="true" />
+                <GoalListItem GoalPointResponseDto="goalPointResponseDto" IsDone="goalPointResponseDto.IsDone" />
             }
         </ul>
     </div>

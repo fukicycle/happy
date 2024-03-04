@@ -28,21 +28,23 @@ namespace Happy.frontend.Components
         public bool IsDone { get; set; } = false;
 
         private string _displayText = string.Empty;
-        private int _point = 0;
+        private Guid _goalPointGuid = Guid.Empty;
+
+        private ConfirmationDialog _confirmationDialog { get; set; } = null!;
 
         private void GoalResponseDtoValueChanged()
         {
             if (_goalPointResponseDto == null) throw new ArgumentNullException(nameof(GoalPointResponseDto));
             _displayText = $"{_goalPointResponseDto.Content}({_goalPointResponseDto.Point}pt)";
-            _point = _goalPointResponseDto.Point;
+            _goalPointGuid = _goalPointResponseDto.GoalPointGuid;
         }
 
-        private async Task ClearButtonOnClick()
+        private async Task OkButtonOnClick()
         {
             try
             {
                 StateContainer.SetLoadingState(true);
-                GainPointRequestDto gainPointRequestDto = new GainPointRequestDto(_point);
+                GainPointRequestDto gainPointRequestDto = new GainPointRequestDto(_goalPointGuid);
                 string json = JsonConvert.SerializeObject(gainPointRequestDto);
                 HttpResponseResult response = await HttpClientService.SendAsync(HttpMethod.Post, "/api/v1/points", json);
                 if (response.StatusCode != System.Net.HttpStatusCode.OK) throw new Exception(response.Message);
@@ -55,6 +57,11 @@ namespace Happy.frontend.Components
             {
                 StateContainer.SetLoadingState(false);
             }
+        }
+
+        private void ClearButtonOnClick()
+        {
+            _confirmationDialog.Open();
         }
     }
 }

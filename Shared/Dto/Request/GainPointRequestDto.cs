@@ -8,10 +8,11 @@ namespace Happy.Shared.Dto.Request
 {
     public class GainPointRequestDto
     {
-        public GainPointRequestDto(int point)
+        public GainPointRequestDto(Guid goalPointGuid)
         {
-            Point = point;
+            GoalPointGuid = goalPointGuid;
         }
-        public int Point { get; }
+
+        public Guid GoalPointGuid { get; }
     }
 }

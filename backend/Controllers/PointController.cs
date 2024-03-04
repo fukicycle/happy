@@ -23,7 +23,22 @@ namespace backend.Controllers
             try
             {
                 string email = _authenticationService.GetEmailFromClaims(HttpContext.User.Claims);
-                _pointService.AddPoint(email, gainPointRequestDto.Point);
+                _pointService.AddPoint(email, gainPointRequestDto.GoalPointGuid);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetUserPoint()
+        {
+            try
+            {
+                string email = _authenticationService.GetEmailFromClaims(HttpContext.User.Claims);
+                //TODO 前日のポイント合計を返す
                 return Ok();
             }
             catch (Exception ex)
