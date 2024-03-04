@@ -11,24 +11,24 @@
         <div class="main-circle">
             <div class="main-content">
                 <div>ポイント</div>
-                @if (_userPointResponseDto == null)
+                @if (_userPoint == null)
                 {
                     <div>-</div>
                 }
                 else
                 {
-                    <div>@_userPointResponseDto.TotalPoint.DisplayText</div>
+                    <div>@_userPoint.TotalPoint.DisplayText</div>
                 }
             </div>
             <div class="sub-content">
                 <div>昨日獲得したポイント</div>
-                @if (_userPointResponseDto == null)
+                @if (_userPoint == null)
                 {
                     <div>-</div>
                 }
                 else
                 {
-                    <div>@_userPointResponseDto.YesterdayPoint.DisplayText</div>
+                    <div>@_userPoint.YesterdayPoint.DisplayText</div>
                 }
             </div>
         </div>
@@ -40,7 +40,8 @@
         <ul class="goal-list">
             @foreach (GoalPointResponseDto goalPointResponseDto in _goalPointResponseDtos)
             {
-                <GoalListItem GoalPointResponseDto="goalPointResponseDto" IsDone="goalPointResponseDto.IsDone" />
+                <GoalListItem GoalPointResponseDto="goalPointResponseDto" IsDone="goalPointResponseDto.IsDone"
+                    OkButtonOnClicked="RefreshAsync" />
             }
         </ul>
     </div>

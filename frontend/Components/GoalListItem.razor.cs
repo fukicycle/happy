@@ -26,6 +26,8 @@ namespace Happy.frontend.Components
 
         [Parameter]
         public bool IsDone { get; set; } = false;
+        [Parameter]
+        public EventCallback OkButtonOnClicked { get; set; }
 
         private string _displayText = string.Empty;
         private Guid _goalPointGuid = Guid.Empty;
@@ -47,7 +49,11 @@ namespace Happy.frontend.Components
                 GainPointRequestDto gainPointRequestDto = new GainPointRequestDto(_goalPointGuid);
                 string json = JsonConvert.SerializeObject(gainPointRequestDto);
                 HttpResponseResult response = await HttpClientService.SendAsync(HttpMethod.Post, "/api/v1/points", json);
-                if (response.StatusCode != System.Net.HttpStatusCode.OK) throw new Exception(response.Message);
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    throw new Exception(response.Message);
+                }
+                await OkButtonOnClicked.InvokeAsync();
             }
             catch (Exception ex)
             {
