@@ -8,7 +8,7 @@ namespace Happy.Shared.Models
         public Guid Guid { get; set; }
         public string Email { get; set; } = null!;
         public DateTime Date { get; set; }
-        public int Point { get; set; }
+        public Guid GaolPointGuid { get; set; }
 
         public virtual Member EmailNavigation { get; set; } = null!;
     }
