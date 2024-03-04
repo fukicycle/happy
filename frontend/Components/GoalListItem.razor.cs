@@ -30,6 +30,8 @@ namespace Happy.frontend.Components
         private string _displayText = string.Empty;
         private Guid _goalPointGuid = Guid.Empty;
 
+        private ConfirmationDialog _confirmationDialog { get; set; } = null!;
+
         private void GoalResponseDtoValueChanged()
         {
             if (_goalPointResponseDto == null) throw new ArgumentNullException(nameof(GoalPointResponseDto));
@@ -37,7 +39,7 @@ namespace Happy.frontend.Components
             _goalPointGuid = _goalPointResponseDto.GoalPointGuid;
         }
 
-        private async Task ClearButtonOnClick()
+        private async Task OkButtonOnClick()
         {
             try
             {
@@ -55,6 +57,11 @@ namespace Happy.frontend.Components
             {
                 StateContainer.SetLoadingState(false);
             }
+        }
+
+        private void ClearButtonOnClick()
+        {
+            _confirmationDialog.Open();
         }
     }
 }
