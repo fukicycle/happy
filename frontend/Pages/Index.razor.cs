@@ -6,6 +6,7 @@ namespace Happy.frontend.Pages
     public partial class Index : PageBase
     {
         private IEnumerable<GoalPointResponseDto> _goalPointResponseDtos = Enumerable.Empty<GoalPointResponseDto>();
+        private UserPointResponseDto? _userPointResponseDto = null;
         protected override async Task OnInitializedAsync()
         {
             try
@@ -38,6 +39,19 @@ namespace Happy.frontend.Pages
                     return;
                 }
                 _goalPointResponseDtos = goalPointResponseDtos;
+                HttpResponseResult userPointResponse = await HttpClientService.SendAsync(HttpMethod.Get, "/api/v1/points");
+                if (userPointResponse.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    StateContainer.SetMessage(goalPointReponse.Message!);
+                    return;
+                }
+                UserPointResponseDto? userPointResponseDto = JsonConvert.DeserializeObject<UserPointResponseDto>(userPointResponse.Json);
+                if (userPointResponseDto == null)
+                {
+                    StateContainer.SetMessage($"Desirializeに失敗しました。{nameof(UserPointResponseDto)}");
+                    return;
+                }
+                _userPointResponseDto = userPointResponseDto;
             }
             finally
             {
