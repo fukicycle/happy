@@ -33,6 +33,7 @@ namespace Happy.frontend.Services
             //TODO DBから値の取得を実施
             //IEnumerable<PointHistoryResponseDto> pointHistoryResponseDtos = await GetPointHistoriesAsync(year, month);
             IList<CalendarCellItem> calendarCellItems = new List<CalendarCellItem>();
+            await Task.Delay(100);
             for (DateTime date = startDate; date <= endDate; date = date.AddDays(1))
             {
                 CalendarCellItem calendarCellItem = new CalendarCellItem(year, month, date);

@@ -4,7 +4,7 @@ namespace Happy.frontend.Pages
 {
     public partial class Calendar : PageBase
     {
-        private IEnumerable<CalendarCellItem> _calendarCellItems = Enumerable.Empty<CalendarCellItem>();
+        private IEnumerable<CalendarCellItem> _calendarCellItems = new List<CalendarCellItem>();
         private DateTime _date = DateTime.Today;
 
         protected override async Task OnInitializedAsync()
