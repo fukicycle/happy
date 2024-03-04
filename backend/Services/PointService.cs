@@ -29,7 +29,7 @@ namespace Happy.backend.Services
                 {
                     Date = DateTime.Now,
                     Email = email,
-                    GaolPointGuid = goalPointGuid,
+                    GoalPointGuid = goalPointGuid,
                     Guid = Guid.NewGuid()
                 };
                 _db.PointHistories.Add(pointHistory);
@@ -51,9 +51,9 @@ namespace Happy.backend.Services
                 {
                     throw new Exception($"No such user: {email}");
                 }
-                IList<PointHistory> pointHistories = _db.PointHistories.Include(pointHistory => pointHistory.GoalPoint).Where(pointHistory => pointHistory.Email == email).ToList();
-                int yesterdayPoint = pointHistories.Where(pointHistory => pointHistory.Date == DateTime.Today.AddDays(-1)).Sum(pointHistory => pointHistory.GoalPoint.Point);
-                int totalPoint = pointHistories.Sum(pointHistory => pointHistory.GoalPoint.Point);
+                IList<PointHistory> pointHistories = _db.PointHistories.Include(pointHistory => pointHistory.GoalPointGu).Where(pointHistory => pointHistory.Email == email).ToList();
+                int yesterdayPoint = pointHistories.Where(pointHistory => pointHistory.Date == DateTime.Today.AddDays(-1)).Sum(pointHistory => pointHistory.GoalPointGu.Point);
+                int totalPoint = pointHistories.Sum(pointHistory => pointHistory.GoalPointGu.Point);
                 return new UserPointResponseDto(yesterdayPoint, totalPoint);
             }
             catch (Exception ex)

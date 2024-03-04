@@ -96,6 +96,12 @@ namespace Happy.backend
                     .HasForeignKey(d => d.Email)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PointHistories_Members");
+
+                entity.HasOne(d => d.GoalPointGu)
+                    .WithMany(p => p.PointHistories)
+                    .HasForeignKey(d => d.GoalPointGuid)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PointHistories_GoalPoints");
             });
 
             modelBuilder.Entity<Team>(entity =>
