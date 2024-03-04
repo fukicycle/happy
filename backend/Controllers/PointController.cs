@@ -33,7 +33,7 @@ namespace backend.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetYesterdayPoint()
+        public IActionResult GetUserPoint()
         {
             try
             {
