@@ -14,7 +14,7 @@ namespace Happy.frontend.Services
             _httpClientService = httpClientService;
             _stateContainer = stateContainer;
         }
-        public async Task GetApiTokenAsync(string email)
+        public async Task<string> LoginAsync(string email)
         {
             try
             {
@@ -30,11 +30,12 @@ namespace Happy.frontend.Services
                 {
                     throw new Exception($"Desirializに失敗しました。{nameof(LoginResponseDto)}");
                 }
-                _httpClientService.SetAuthorizationToken(loginResponseDto.Token);
+                return loginResponseDto.Token;
             }
             catch (Exception ex)
             {
                 _stateContainer.SetMessage(ex.Message);
+                return string.Empty;
             }
         }
     }
