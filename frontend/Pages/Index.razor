@@ -25,7 +25,7 @@
         <ul class="goal-list">
             @foreach (GoalPointResponseDto goalPointResponseDto in _goalPointResponseDtos)
             {
-                <GoalListItem GoalPointResponseDto="goalPointResponseDto" IsDone="true" />
+                <GoalListItem GoalPointResponseDto="goalPointResponseDto" IsDone="goalPointResponseDto.IsDone" />
             }
         </ul>
     </div>
