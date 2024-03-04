@@ -10,20 +10,20 @@ namespace Happy.frontend.Components
         public string Message { get; set; } = string.Empty;
 
         [Parameter]
-        public EventCallback CancelButtoOnClick { get; set; }
+        public EventCallback OkButtonOnClick { get; set; }
 
         private string _displayChangeStyle = "display: none;";
 
-        public void OkClose()
+        public async Task OkClose()
         {
+            await OkButtonOnClick.InvokeAsync();
             Title = string.Empty;
             Message = string.Empty;
             _displayChangeStyle = "display: none;";
         }
 
-        public async Task CacnelClose()
+        public void CacnelClose()
         {
-            await CancelButtoOnClick.InvokeAsync();
             Title = string.Empty;
             Message = string.Empty;
             _displayChangeStyle = "display: none;";
