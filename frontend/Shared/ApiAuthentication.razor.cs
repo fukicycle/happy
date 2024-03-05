@@ -1,9 +1,12 @@
 ﻿using Happy.frontend.Services;
+using Microsoft.AspNetCore.Components;
 
 namespace Happy.frontend.Shared
 {
     public partial class ApiAuthentication
     {
+        [SupplyParameterFromQuery]
+        public string? Redirect { get; set; }
         protected override async Task OnInitializedAsync()
         {
             string? email = await LocalStorageService.GetItemAsStringAsync("EMAIL");
@@ -19,7 +22,14 @@ namespace Happy.frontend.Shared
                 return;
             }
             HttpClientService.SetAuthorizationToken(token);
-            NavigationManager.NavigateTo("home");
+            if (Redirect == null)
+            {
+                NavigationManager.NavigateTo("home");
+            }
+            else
+            {
+                NavigationManager.NavigateTo(Redirect);
+            }
         }
     }
 }
