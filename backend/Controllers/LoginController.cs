@@ -21,7 +21,7 @@ namespace backend.Controllers
                 string token = _authenticationService.GenerateAccessToken(loginRequestDto.Email);
                 return Ok(new LoginResponseDto(token));
             }
-            return Unauthorized();
+            return Forbid();
         }
     }
 }

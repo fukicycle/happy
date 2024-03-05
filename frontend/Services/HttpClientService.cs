@@ -1,6 +1,7 @@
 ﻿using Happy.frontend.Services.Interfaces;
 using Newtonsoft.Json;
 using Happy.Shared;
+using Microsoft.AspNetCore.Components;
 
 namespace Happy.frontend.Services
 {
@@ -9,10 +10,12 @@ namespace Happy.frontend.Services
         private static string _token = string.Empty;
         private readonly HttpClient _httpClient;
         private readonly ILogger<HttpClientService> _logger;
-        public HttpClientService(IHttpClientFactory httpClientFactory, ILogger<HttpClientService> logger)
+        private readonly NavigationManager _navigationManager;
+        public HttpClientService(IHttpClientFactory httpClientFactory, ILogger<HttpClientService> logger, NavigationManager navigationManager)
         {
             _httpClient = httpClientFactory.CreateClient(ApplicationSettings.Mode.ToString());
             _logger = logger;
+            _navigationManager = navigationManager;
         }
 
         public async Task<HttpResponseResult> SendAsync(HttpMethod method, string uri, string? json = default)
@@ -31,9 +34,14 @@ namespace Happy.frontend.Services
                 }
                 HttpResponseMessage httpResponseMessage = await _httpClient.SendAsync(httpRequestMessage);
                 string responseContent = await httpResponseMessage.Content.ReadAsStringAsync();
+                if (httpResponseMessage.StatusCode == System.Net.HttpStatusCode.Forbidden)
+                {
+                    _navigationManager.NavigateTo($"/?redirect={_navigationManager.Uri}");
+                    return new HttpResponseResult(string.Empty, System.Net.HttpStatusCode.Forbidden, "ユーザが登録されていません。利用申請してください。");
+                }
                 if (httpResponseMessage.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    return new HttpResponseResult(string.Empty, System.Net.HttpStatusCode.Unauthorized, "認証に失敗またはユーザが登録されていません。");
+                    return new HttpResponseResult(string.Empty, System.Net.HttpStatusCode.Unauthorized, "認証に失敗しました。");
                 }
                 if (httpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
