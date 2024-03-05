@@ -40,7 +40,7 @@ namespace Happy.frontend.Services
                 }
                 if (httpResponseMessage.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    _navigationManager.NavigateTo($"/?redirect={_navigationManager.Uri}");
+                    _navigationManager.NavigateTo($"?redirect={_navigationManager.Uri}");
                     return new HttpResponseResult(string.Empty, System.Net.HttpStatusCode.Unauthorized, "認証に失敗しました。");
                 }
                 if (httpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)

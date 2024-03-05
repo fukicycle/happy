@@ -5,7 +5,8 @@ namespace Happy.frontend.Shared
 {
     public partial class ApiAuthentication
     {
-        [SupplyParameterFromQuery]
+        [Parameter]
+        [SupplyParameterFromQuery(Name = "redirect")]
         public string? Redirect { get; set; }
         protected override async Task OnInitializedAsync()
         {
