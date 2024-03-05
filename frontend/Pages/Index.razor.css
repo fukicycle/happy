@@ -41,7 +41,6 @@
 
 .goal-list {
     margin: 0;
-    min-height: 200px;
     display: flex;
     flex: 1;
     flex-direction: column;
