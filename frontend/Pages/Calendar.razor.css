@@ -8,6 +8,10 @@
     margin: auto;
 }
 
+.page-title {
+    font-size: 24px;
+}
+
 .select-area {
     display: flex;
     width: 100%;
@@ -21,9 +25,14 @@ button {
     width: 35px;
     height: 35px;
     border: none;
-    box-shadow: #4F4F4F 0 0 4px;
     color: var(--app-white);
     border-radius: 50%;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
 .calendar-area {

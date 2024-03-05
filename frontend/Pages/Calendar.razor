@@ -2,11 +2,15 @@
 @page "/calendar"
 @inherits PageBase
 <div class="content">
-    <div>ポイントカレンダー</div>
+    <div class="page-title">ポイントカレンダー</div>
     <div class="select-area">
-        <button @onclick=@PrevButtonOnClick>&lt;</button>
+        <button @onclick=@PrevButtonOnClick>
+            <img src="img/left.svg" />
+        </button>
         <div>@_date.ToString("MMMM")</div>
-        <button @onclick=@NextButtonOnClick>&gt;</button>
+        <button @onclick=@NextButtonOnClick>
+            <img src="img/right.svg" />
+        </button>
     </div>
     <div class="calendar-area">
         <Neumorphism BorderRadius="20px">
