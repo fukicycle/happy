@@ -1,19 +1,32 @@
-﻿/* HTML: <div class="loader"></div> */
+﻿.loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--app-black);
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* HTML: <div class="loader"></div> */
 .loader {
     width: 50px;
     aspect-ratio: 1;
     display: grid;
-    border: 4px solid #0000;
+    border: 1px solid #0000;
     border-radius: 50%;
-    border-color: var(--primary-colpr) #0000;
-    animation: l16 1s infinite linear;
+    border-color: var(--primary-color) #0000;
+    animation: l16 .6s infinite linear;
 }
 
     .loader::before,
     .loader::after {
         content: "";
         grid-area: 1/1;
-        margin: 2px;
+        margin: 4px;
         border: inherit;
         border-radius: 50%;
     }
@@ -21,7 +34,7 @@
     .loader::before {
         border-color: var(--accent-color) #0000;
         animation: inherit;
-        animation-duration: .5s;
+        animation-duration: .3s;
         animation-direction: reverse;
     }
 
