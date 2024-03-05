@@ -21,7 +21,7 @@ namespace Happy.backend.Services
             try
             {
                 Goal goal = _db.Goals.Include(a => a.GoalPoints).Single(goal => goal.Guid == guid);
-                IEnumerable<GoalPoint> goalPointList = goal.GoalPoints;
+                IEnumerable<GoalPoint> goalPointList = goal.GoalPoints.OrderByDescending(goalPoint => goalPoint.Point);
                 foreach (GoalPoint goalPoint in goalPointList)
                 {
                     bool isDone = _db.PointHistories.Any(pointHistory => pointHistory.Date == DateTime.Today && pointHistory.GoalPointGuid == goalPoint.Guid);
