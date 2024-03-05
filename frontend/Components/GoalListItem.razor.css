@@ -3,6 +3,7 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    padding: .5rem;
 }
 
 .status {
@@ -11,6 +12,6 @@
     color: var(--app-white);
 }
 
-::deep .neu > div {
+::deep .neu>div {
     padding: 0 !important;
 }
