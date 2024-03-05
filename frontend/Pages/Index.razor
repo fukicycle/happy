@@ -47,7 +47,7 @@
     </div>
     <div class="edit">
         <div class="summary">
-            <div>合計:6pt</div>
+            <div>合計:@_goalPointResponseDtos.Where(a => a.IsDone).Sum(a => a.Point)pt</div>
         </div>
         <Neumorphism class="neu" BorderRadius="50%">
             <button class="btn-edit" @onclick=@EditButtonOnClick>
