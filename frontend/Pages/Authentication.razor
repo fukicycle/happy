@@ -1,6 +1,11 @@
 ﻿@page "/authentication/{action}"
-<RemoteAuthenticatorView Action="@Action" />
-<Loader />
+<RemoteAuthenticatorView Action="@Action">
+    <LoggingIn>
+        <div class="loader-wrapper">
+            <div class="loader"></div>
+        </div>
+    </LoggingIn>
+</RemoteAuthenticatorView>
 
 @code {
     [Parameter] public string? Action { get; set; }
