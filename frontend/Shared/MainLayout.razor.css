@@ -3,10 +3,6 @@
     height: 100%;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: calc(100% - 80px) 80px;
+    grid-template-rows: calc(100% - 70px) 70px;
     padding-bottom: env(safe-area-inset-bottom);
-}
-
-main {
-    flex: 1;
 }
