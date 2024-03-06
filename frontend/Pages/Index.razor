@@ -9,8 +9,10 @@
 <div class="content">
     <Neumorphism BorderRadius="50%" class="neu-circle">
         <div class="main-circle">
+            <div class="date-area">
+                @DateTime.Now.ToString("M")
+            </div>
             <div class="main-content">
-                <div>ポイント</div>
                 @if (_userPoint == null)
                 {
                     <div>-</div>
@@ -34,14 +36,11 @@
         </div>
     </Neumorphism>
     <div class="goal-area">
-        <div class="date-area">
-            @DateTime.Now.ToString("yyyy年MM月dd日　dddd")
-        </div>
         <ul class="goal-list">
             @foreach (GoalPointResponseDto goalPointResponseDto in _goalPointResponseDtos)
             {
                 <GoalListItem GoalPointResponseDto="goalPointResponseDto" IsDone="goalPointResponseDto.IsDone"
-                    OkButtonOnClicked="RefreshAsync" />
+                              OkButtonOnClicked="RefreshAsync" />
             }
         </ul>
     </div>

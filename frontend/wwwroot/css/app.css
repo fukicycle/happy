@@ -15,7 +15,6 @@ body {
     height: 100%;
     background-color: var(--app-black);
     color: var(--app-white);
-    padding-bottom: env(safe-area-inset-bottom);
 }
 
 #app,
