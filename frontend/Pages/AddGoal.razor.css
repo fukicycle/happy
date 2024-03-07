@@ -45,7 +45,8 @@
     grid-template-columns: 1fr 40px;
     grid-column-gap: .5rem;
     grid-template-rows: auto;
-    padding: .5rem 0;
+    padding: 0;
+    padding-top: .5rem;
 }
 
 .goal-content {
@@ -57,7 +58,7 @@
     min-width: 0;
 }
 
-.goal-item > input {
+.goal-item>input {
     padding: .5rem;
     color: var(--app-white) !important;
     background-color: var(--app-black);
@@ -73,9 +74,9 @@
     grid-column-gap: .5rem;
 }
 
-    .btn-area > ::deep div {
-        width: 100%;
-    }
+.btn-area> ::deep div {
+    width: 100%;
+}
 
 button {
     color: var(--app-white);

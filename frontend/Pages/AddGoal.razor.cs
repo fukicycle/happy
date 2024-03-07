@@ -1,9 +1,12 @@
-﻿namespace Happy.frontend.Pages
+﻿using Happy.frontend.Models;
+
+namespace Happy.frontend.Pages
 {
-    public partial class AddGoal
+    public partial class AddGoal : PageBase
     {
         private DateTime? _periodStartDate = null;
         private DateTime? _periodEndDate = null;
+        private IList<GoalPointItem> _goalPointItems = new List<GoalPointItem>();
 
         protected override void OnInitialized()
         {
@@ -25,6 +28,15 @@
         private void CancelButtonOnClick()
         {
             NavigationManager.NavigateTo("home");
+        }
+
+        private void AddRowButtonOnClick()
+        {
+            if (_goalPointItems.Count >= 6)
+            {
+                return;
+            }
+            _goalPointItems.Add(new GoalPointItem());
         }
     }
 }
