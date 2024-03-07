@@ -1,4 +1,5 @@
 ﻿@inject NavigationManager NavigationManager
+@inherits PageBase
 @page "/add"
 <div class="add-page-wrapper">
     <div class="add-page-container">
@@ -8,17 +9,16 @@
         </div>
         <div class="goal-area">
             <ul class="goal-list">
-                <li class="goal-item">
-                    <input class="goal-content" type="text" value="早く寝る" />
-                    <input class="goal-point" type="number" value="3" />
-                </li>
-                <li class="goal-item">
-                    <input class="goal-content" type="text" />
-                    <input class="goal-point" type="number" />
-                </li>
+                @foreach (GoalPointItem goalPointItem in _goalPointItems)
+                {
+                    <li class="goal-item">
+                        <input class="goal-content" type="text" @bind=@goalPointItem.Content />
+                        <input class="goal-point" type="number" @bind=@goalPointItem.Point />
+                    </li>
+                }
             </ul>
             <Neumorphism BorderRadius="20px">
-                <button>入力欄を増やす</button>
+                <button @onclick=@AddRowButtonOnClick>入力欄を増やす(6個まで)</button>
             </Neumorphism>
         </div>
         <div class="btn-area">
