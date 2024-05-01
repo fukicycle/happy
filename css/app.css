@@ -1,0 +1,37 @@
+﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+:root {
+    --primary-color: #FFC30D;
+    --app-black: #2E2E2E;
+    --app-white: #EAEAEA;
+    --accent-color: #63C132;
+}
+
+html,
+body {
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 400;
+    font-style: normal;
+    height: 100%;
+    background-color: var(--app-black);
+    color: var(--app-white);
+}
+
+#app,
+article {
+    height: 100%;
+}
+
+.splash-screen {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.splash-screen>img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
